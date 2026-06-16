@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estética Bianca Teo – Studio de Cílios</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink: #e91e8c;
+      --pink-light: #ff6ec7;
+      --gold: #c8a96e;
+      --gold-light: #f0d080;
+      --black: #0a0a0a;
+      --dark: #1a1a1a;
+      --white: #fff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200,169,110,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 900;
+    }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color .3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(233,30,140,0.18) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(200,169,110,0.12) 0%, transparent 50%),
+                  var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8a96e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      color: white;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--pink), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 40px;
+      line-height: 1.7;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--pink), #b5006e);
+      color: white;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 8px 30px rgba(233,30,140,0.4);
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(233,30,140,0.6); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      padding: 15px 36px;
+      border: 2px solid var(--gold);
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .3s;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--black); }
+
+    /* ── STATS ── */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      flex-wrap: wrap;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, rgba(233,30,140,0.06), rgba(200,169,110,0.06));
+      border-top: 1px solid rgba(200,169,110,0.15);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: block;
+    }
+    .stat-label { color: rgba(255,255,255,0.6); font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin-top: 4px; }
+
+    /* ── SECTION HEADER ── */
+    .section { padding: 90px 20px; max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 60px; }
+    .section-tag {
+      color: var(--pink);
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-title span {
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .section-subtitle { color: rgba(255,255,255,0.6); font-size: 1rem; line-height: 1.7; max-width: 500px; margin: 0 auto; }
+    .divider {
+      width: 60px; height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ── SOBRE ── */
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .sobre-text p { color: rgba(255,255,255,0.75); line-height: 1.9; margin-bottom: 20px; font-size: 1.05rem; }
+    .sobre-features { display: flex; flex-direction: column; gap: 16px; margin-top: 30px; }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,169,110,0.15);
+      border-radius: 12px;
+      transition: border-color .3s;
+    }
+    .feature:hover { border-color: var(--pink); }
+    .feature-icon { font-size: 1.5rem; }
+    .feature-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .sobre-visual {
+      background: linear-gradient(135deg, rgba(233,30,140,0.1), rgba(200,169,110,0.1));
+      border: 1px solid rgba(200,169,110,0.2);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    .sobre-visual .big-emoji { font-size: 6rem; margin-bottom: 20px; display: block; }
+    .sobre-visual h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .sobre-visual p { color: rgba(255,255,255,0.6); font-size: 0.95rem; }
+
+    /* ── SERVIÇOS ── */
+    .servicos-bg { background: linear-gradient(180deg, transparent, rgba(233,30,140,0.04), transparent); }
+    .servicos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .servico-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,169,110,0.15);
+      border-radius: 20px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: all .3s;
+      cursor: default;
+    }
+    .servico-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--pink);
+      background: rgba(233,30,140,0.06);
+      box-shadow: 0 20px 40px rgba(233,30,140,0.15);
+    }
+    .servico-icon { font-size: 2.8rem; margin-bottom: 16px; display: block; }
+    .servico-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--gold-light);
+    }
+    .servico-card p { color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── AVALIAÇÕES ── */
+    .avaliacoes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .avaliacao-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(200,169,110,0.15);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: all .3s;
+    }
+    .avaliacao-card:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(200,169,110,0.1); }
+    .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 14px; letter-spacing: 2px; }
+    .avaliacao-text { color: rgba(255,255,255,0.8); line-height: 1.7; font-size: 0.95rem; margin-bottom: 20px; font-style: italic; }
+    .avaliacao-autor { display: flex; align-items: center; gap: 12px; }
+    .autor-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+    }
+    .autor-nome { font-weight: 700; font-size: 0.95rem; color: var(--gold-light); }
+    .autor-info { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+
+    /* ── CONTATO ── */
+    .contato-bg {
+      background: linear-gradient(135deg, rgba(233,30,140,0.08), rgba(200,169,110,0.08));
+      border-top: 1px solid rgba(200,169,110,0.15);
+      border-bottom: 1px solid rgba(200,169,110,0.15);
+    }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .contato-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .contato-info h2 span {
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .contato-info p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 30px; }
+    .contato-items { display: flex; flex-direction: column; gap: 16px; }
+    .contato-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(200,169,110,0.15);
+      border-radius: 12px;
+    }
+    .contato-item-icon { font-size: 1.4rem; }
+    .contato-item-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); }
+    .contato-item-text strong { display: block; color: var(--gold); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 2px; }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(233,30,140,0.12), rgba(200,169,110,0.12));
+      border: 1px solid rgba(233,30,140,0.3);
+      border-radius: 24px;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    .cta-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+    .cta-box p { color: rgba(255,255,255,0.6); margin-bottom: 30px; line-height: 1.7; }
+    .btn-wpp {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: white;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform .3s, box-shadow .3s;
+      box-shadow: 0 8px 30px rgba(37,211,102,0.3);
+    }
+    .btn-wpp:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(37,211,102,0.5); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(0,0,0,0.6);
+      border-top: 1px solid rgba(200,169,110,0.1);
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--pink), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    footer p { color: rgba(255,255,255,0.35); font-size: 0.85rem; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wpp-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.5);
+      animation: pulse 2s infinite;
+      transition: transform .3s;
+    }
+    .wpp-float:hover { transform: scale(1.1); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 6px 24px rgba(37,211,102,0.5); }
+      50% { box-shadow: 0 6px 40px rgba(37,211,102,0.8); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .sobre-grid, .contato-grid { grid-template-columns: 1fr; gap: 40px; }
+      .stats { gap: 30px; }
+      .stat-num { font-size: 2.2rem; }
+      .cta-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">✨ Bianca Teo</div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#avaliacoes">Avaliações</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">⭐ 5.0 · 26 Avaliações no Google</div>
+    <h1>Studio de Cílios<br /><span>Bianca Teo</span></h1>
+    <p>Realce o seu olhar com técnicas exclusivas de alongamento de cílios. Beleza, cuidado e precisão em cada fio. 👁️✨</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5511939516272?text=Olá%20Bianca!%20Quero%20agendar%20um%20horário%20😊" class="btn-primary" target="_blank">📅 Agendar Horário</a>
+      <a href="#servicos" class="btn-outline">Ver Serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <span class="stat-num">5.0⭐</span>
+    <span class="stat-label">Nota no Google</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">26+</span>
+    <span class="stat-label">Avaliações</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Satisfação</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">2+</span>
+    <span class="stat-label">Anos de Experiência</span>
+  </div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <span class="section-tag">Quem Somos</span>
+        <h2 class="section-title">Especialistas em<br /><span>Realçar Seu Olhar</span></h2>
+        <div class="divider" style="margin: 16px 0 24px;"></div>
+        <p>A Estética Bianca Teo é um studio especializado em cílios, localizado em Ferraz de Vasconcelos – SP. Com profissionalismo, pontualidade e um atendimento acolhedor, cada cliente sai encantada com os resultados.</p>
+        <p>Bianca é reconhecida pelo talento incrível, atenção aos detalhes e por fazer cada cliente se sentir especial desde o primeiro atendimento.</p>
+        <div class="sobre-features">
+          <div class="feature"><span class="feature-icon">✅</span><span class="feature-text">Profissional certificada e experiente</span></div>
+          <div class="feature"><span class="feature-icon">⏰</span><span class="feature-text">Pontual e organizada</span></div>
+          <div class="feature"><span class="feature-icon">💗</span><span class="feature-text">Atendimento acolhedor e personalizado</span></div>
+          <div class="feature"><span class="feature-icon">✨</span><span class="feature-text">Resultados impecáveis garantidos</span></div>
+        </div>
+      </div>
+      <div class="sobre-visual">
+        <span class="big-emoji">👁️</span>
+        <h3>Estética Bianca Teo</h3>
+        <p>Studio de Cílios Premium<br />Ferraz de Vasconcelos – SP</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos" class="servicos-bg">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">O Que Oferecemos</span>
+      <h2 class="section-title">Nossos <span>Serviços</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle" style="margin-top:16px;">Técnicas modernas para realçar a sua beleza natural</p>
+    </div>
+    <div class="servicos-grid">
+      <div class="servico-card">
+        <span class="servico-icon">🌸</span>
+        <h3>Fio a Fio</h3>
+        <p>Resultado natural e delicado. Ideal para quem quer um visual sutil e elegante no dia a dia.</p>
+      </div>
+      <div class="servico-card">
+        <span class="servico-icon">✨</span>
+        <h3>Volume Russo</h3>
+        <p>Leques de 3D a 6D para um efeito dramático e marcante. Perfeito para ocasiões especiais.</p>
+      </div>
+      <div class="servico-card">
+        <span class="servico-icon">💫</span>
+        <h3>Mega Volume</h3>
+        <p>Máximo volume e impacto visual. Para quem ama um olhar intenso e poderoso.</p>
+      </div>
+      <div class="servico-card">
+        <span class="servico-icon">💎</span>
+        <h3>Híbrido</h3>
+        <p>Mix perfeito entre fio a fio e volume. Um resultado equilibrado, natural e sofisticado.</p>
+      </div>
+      <div class="servico-card">
+        <span class="servico-icon">🌙</span>
+        <h3>Lash Lifting</h3>
+        <p>Curvatura permanente nos seus próprios cílios. Sem extensões, resultado natural e duradouro.</p>
+      </div>
+      <div class="servico-card">
+        <span class="servico-icon">🔧</span>
+        <h3>Manutenção</h3>
+        <p>Reposição dos fios para manter seu olhar sempre perfeito e cheio de vida.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AVALIAÇÕES -->
+<section id="avaliacoes">
+  <div class="section">
+    <div class="section-header">
+      <span class="section-tag">O Que Dizem</span>
+      <h2 class="section-title">Clientes <span>Encantadas</span></h2>
+      <div class="divider"></div>
+      <p class="section-subtitle" style="margin-top:16px;">Avaliações reais de quem já viveu a experiência</p>
+    </div>
+    <div class="avaliacoes-grid">
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <p class="avaliacao-text">"Amo o trabalho da Bianca, desde o meu primeiro atendimento sempre saio encantada! Ela é extremamente educada, pontual e atenciosa, além de ter um talento incrível. O resultado é sempre impecável. Recomendo de olhos fechados!"</p>
+        <div class="avaliacao-autor">
+          <div class="autor-avatar">M</div>
+          <div>
+            <div class="autor-nome">Melissa Scartezini</div>
+            <div class="autor-info">Cliente verificada · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <p class="avaliacao-text">"A Bianca é uma ótima profissional! Ágil e pontual, além de ser um amor de pessoa e faz você se sentir confortável desde o primeiro atendimento ❤️ recomendo demais!! AMO o trabalho dela"</p>
+        <div class="avaliacao-autor">
+          <div class="autor-avatar">B</div>
+          <div>
+            <div class="autor-nome">Bianca Oliveira</div>
+            <div class="autor-info">Cliente verificada · Google</div>
+          </div>
+        </div>
+      </div>
+      <div class="avaliacao-card">
+        <div class="stars">★★★★★</div>
+        <p class="avaliacao-text">"Excelente adorei o trabalho da Bianca, parabéns, estou apaixonada obg pelo carinho estou me sentindo feliz 👏🏻👏🏻❤️🥰☺️😍"</p>
+        <div class="avaliacao-autor">
+          <div class="autor-avatar">D</div>
+          <div>
+            <div class="autor-nome">Daniele Neves</div>
+            <div class="autor-info">Cliente verificada · Google</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="contato-bg">
+  <div class="section">
+    <div class="contato-grid">
+      <div class="contato-info">
+        <h2>Vamos <span>Agendar?</span></h2>
+        <p>Entre em contato e marque seu horário. Atendimento personalizado e resultado que vai te encantar! 💗</p>
+        <div class="contato-items">
+          <div class="contato-item">
+            <span class="contato-item-icon">📍</span>
+            <div class="contato-item-text">
+              <strong>Endereço</strong>
+              Av. Vinicius de Moraes, 72 - Vila São Paulo, Ferraz de Vasconcelos - SP
+            </div>
+          </div>
+          <div class="contato-item">
+            <span class="contato-item-icon">📱</span>
+            <div class="contato-item-text">
+              <strong>WhatsApp</strong>
+              (11) 93951-6272
+            </div>
+          </div>
+          <div class="contato-item">
+            <span class="contato-item-icon">⏰</span>
+            <div class="contato-item-text">
+              <strong>Horário de Atendimento</strong>
+              Terça a Sábado · a partir das 08:00
+            </div>
+          </div>
+          <div class="contato-item">
+            <span class="contato-item-icon">📸</span>
+            <div class="contato-item-text">
+              <strong>Instagram</strong>
+              Siga para ver resultados incríveis!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-box">
+        <div style="font-size:3.5rem;margin-bottom:16px;">💅</div>
+        <h3>Agende Seu <span style="background:linear-gradient(90deg,var(--pink),var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Horário</span></h3>
+        <p>Clique abaixo e fale diretamente com a Bianca pelo WhatsApp. Rápido, fácil e sem complicação!</p>
+        <a href="https://wa.me/5511939516272?text=Olá%20Bianca!%20Quero%20agendar%20um%20horário%20no%20studio%20de%20cílios%20😊" class="btn-wpp" target="_blank">
+          💬 Falar no WhatsApp
+        </a>
+        <p style="margin-top:20px;font-size:0.8rem;color:rgba(255,255,255,0.4);">Resposta rápida · Sem compromisso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">✨ Estética Bianca Teo</div>
+  <p>Studio de Cílios Premium · Ferraz de Vasconcelos – SP</p>
+  <p style="margin-top:8px;">Feito com 💗 para realçar sua beleza</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5511939516272?text=Olá%20Bianca!%20Quero%20agendar%20um%20horário%20😊" class="wpp-float" target="_blank" title="Falar no WhatsApp">💬</a>
+
+</body>
+</html>
